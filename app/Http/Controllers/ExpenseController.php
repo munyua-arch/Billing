@@ -20,6 +20,19 @@ class ExpenseController extends Controller
         return view('expenses.create');
     }
 
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'type' => 'required|string|max:100',
+            'method' => 'required|string|max:100',
+            'amount' => 'required|string|max:100'
+        ]); 
+
+        Expenses::create($validated);
+
+        return redirect()->route('expenses.index')->with('success', 'New expense created successfully!');
+    }
+
     public function edit($id)
     {
         

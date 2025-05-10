@@ -58,6 +58,7 @@
                                     <td>{{ $expense->type}}</td>
                                     <td>{{ $expense->amount}}</td>
                                     <td>{{ $expense->method}}</td>
+                                    <td>{{ $expense->created_at}}</td>
                                    
                                     <td>
                                         <!-- Action buttons here -->
@@ -66,7 +67,7 @@
 
                                             @method('DELETE')
 
-                                            <a  href="{{ route('expense.edit', $expense->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a  href="{{ route('expenses.edit', $expense->id)}}" class="btn btn-warning btn-sm">Edit</a>
                                             <button class="btn btn-danger btn-sm">Delete</button>
                                          </form>
                                     </td>

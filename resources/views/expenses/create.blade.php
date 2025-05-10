@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                
                                     <div>
                                         <div class="form-group">
                                             <label class="form-control-label" for="email">Payment Gateway</label>
@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                    
-                                </div>
+                               
                                
                             </div>
 
