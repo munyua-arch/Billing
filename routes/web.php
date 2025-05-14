@@ -50,7 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// client routes
 	Route::get('clients', [ClientController::class, 'index'])->name('client.index');
-	Route::get('ppoe', [ClientController::class, 'ppoe'])->name('client.ppoe');
+	Route::get('create', [ClientController::class, 'create'])->name('client.create');
+	Route::post('create/client', [ClientController::class, 'store'])->name('client.store');
 
 
 	// fincance routes
@@ -69,9 +70,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('expenses', [ExpenseController::class, 'index'])->name('expenses.index');
 	Route::get('expenses/create', [ExpenseController::class, 'create'])->name('expenses.create');
 	Route::post('expenses/create', [ExpenseController::class, 'store'])->name('expenses.store');
-	Route::get('expenses/{expenses}/edit', [ExpenseController::class, 'edit'])->name('expenses.edit');
-	Route::put('expenses/{expenses}', [ExpenseController::class, 'update'])->name('expenses.update');
-	Route::delete('expenses/{expenses}', [ExpenseController::class, 'delete'])->name('expenses.delete');
+	Route::get('expenses/{id}/edit', [ExpenseController::class, 'edit'])->name('expenses.edit');
+	Route::put('expenses/{id}', [ExpenseController::class, 'update'])->name('expenses.update');
+	Route::delete('expenses/{id}', [ExpenseController::class, 'delete'])->name('expenses.delete');
 	
 });
 

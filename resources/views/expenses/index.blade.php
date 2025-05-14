@@ -1,7 +1,92 @@
 @extends('layouts.app')
 
 @section('content')
-@include('layouts.headers.expense')
+<div class="header bg-gradient-primary pb-1 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Card stats -->
+            <div class="row">
+                <!-- Total Expenses Card -->
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Total Expenses</h5>
+                                    <span class="h2 font-weight-bold mb-0">KSH {{ number_format($counts['total_amount'], 2) }}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="{{ ($counts['total_trend'] >= 0) ? 'text-success' : 'text-warning' }} mr-2">
+                                    <i class="fas {{ ($counts['total_trend'] >= 0) ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i> 
+                                    {{ abs($counts['total_trend'] ?? 0) }}%
+                                </span>
+                                <span class="text-nowrap">Since last month</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monthly Expenses Card -->
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Monthly Expenses</h5>
+                                    <span class="h2 font-weight-bold mb-0">KSH {{ number_format($counts['monthly_amount'] ?? 0, 2) }}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                        <i class="fas fa-chart-pie"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="{{ ($counts['monthly_trend'] >= 0) ? 'text-success' : 'text-warning' }} mr-2">
+                                    <i class="fas {{ ($counts['monthly_trend'] >= 0) ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i> 
+                                    {{ abs($counts['monthly_trend'] ?? 0) }}%
+                                </span>
+                                <span class="text-nowrap">Since last week</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Expenses Card -->
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Daily Expenses</h5>
+                                    <span class="h2 font-weight-bold mb-0">KSH {{ number_format($counts['daily_amount'] ?? 0, 2) }}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                        <i class="fas fa-calendar-day"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="{{ ($counts['daily_trend'] >= 0) ? 'text-success' : 'text-warning' }} mr-2">
+                                    <i class="fas {{ ($counts['daily_trend'] >= 0) ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i> 
+                                    {{ abs($counts['daily_trend'] ?? 0) }}%
+                                </span>
+                                <span class="text-nowrap">Since yesterday</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Header Section -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
         <div class="container-fluid">

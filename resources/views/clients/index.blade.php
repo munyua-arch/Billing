@@ -34,7 +34,7 @@
                                 <h3 class="mb-0">Clients</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="" class="btn btn-sm btn-primary">Add Client</a>
+                                <a href="{{ route('client.create') }}" class="btn btn-sm btn-primary">Add Client</a>
                             </div>
                         </div>
                     </div>

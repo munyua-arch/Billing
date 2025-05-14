@@ -93,7 +93,7 @@
                        aria-expanded="{{ request()->is('profile*') || request()->is('user*') ? 'true' : 'false' }}" 
                        aria-controls="members-collapse">
                         <i class="fas fa-user mr-2 text-primary" style="color: #f4645f;"></i>
-                        <span class="nav-link-text">{{ __('Members') }}</span>
+                        <span class="nav-link-text">{{ __('Staff') }}</span>
                     </a>
 
                     <div class="collapse {{ request()->is('profile*') || request()->is('user*') ? 'show' : '' }}" id="members-collapse">
@@ -126,11 +126,6 @@
 
                     <div class="collapse {{ request()->is('roles*') ? 'show' : '' }}" id="roles-collapse">
                         <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                                <a class="nav-link {{ request()->is('roles/index') ? 'active' : '' }}" href="{{ route('client.ppoe')}}">
-                                    {{ __('PPOE') }}
-                                </a>
-                            </li>
 
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}" href="{{ route('client.index') }}">
