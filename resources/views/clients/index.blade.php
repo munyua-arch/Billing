@@ -43,30 +43,31 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">Userame</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Actions</th> <!-- Added actions column -->
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Package</th>
+                                    <th scope="col">Expiry</th>
+                                    <th scope="col">Action</th> <!-- Added actions column -->
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($clients as $client)
-                                <tr>  <!-- Each user gets their own row -->
-                                    <th scope="row">{{ $client->id }}</th>  <!-- Use scope="row" for th in tbody -->
-                                    <td>{{ $client->name }}</td>
-                                    <td>{{ $client->email }}</td>
-                                    <td>+{{ $client->phone }}</td>
+                                <tr>  <!-- Each user gets their own row --> <!-- Use scope="row" for th in tbody -->
+                                    <td>{{ $client->username }}</td>
+                                    <td>{{ $client->phone_number }}</td>
+                                    <td>{{ $client->location }}</td>
+                                    <td>{{ $client->package }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($client->expiry_date)->format('d/M/Y')}}</td>
                                    
                                     <td>
                                         <!-- Action buttons here -->
-                                         <form action="{{ route('user.destroy', $user->id)}}" method="POST">
+                                         <form action="{{ route('client.destroy', $client->id)}}" method="POST">
                                             @csrf
 
                                             @method('DELETE')
 
-                                            <a  href="{{ route('user.edit', $user->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a  href="{{ route('client.edit', $client->id)}}" class="btn btn-warning btn-sm">Edit</a>
                                             <button class="btn btn-danger btn-sm">Delete</button>
                                          </form>
                                     </td>

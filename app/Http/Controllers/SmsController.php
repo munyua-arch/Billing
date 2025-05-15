@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clients;
 use App\Models\Sms;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -166,9 +167,9 @@ class SmsController extends Controller
 
      public function toAll()
      {
-        $users = User::all();
+        $clients = Clients::all();
 
-        return view('sms.all', compact('users'));
+        return view('sms.all', compact('clients'));
      }
 
 

@@ -51,7 +51,10 @@ Route::group(['middleware' => 'auth'], function () {
 	// client routes
 	Route::get('clients', [ClientController::class, 'index'])->name('client.index');
 	Route::get('create', [ClientController::class, 'create'])->name('client.create');
-	Route::post('create/client', [ClientController::class, 'store'])->name('client.store');
+	Route::post('create', [ClientController::class, 'store'])->name('client.store');
+	Route::get('edit/{id}', [ClientController::class, 'edit'])->name('client.edit');
+	Route::put('edit/{id}', [ClientController::class, 'update'])->name('client.update');
+	Route::delete('client/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
 
 
 	// fincance routes

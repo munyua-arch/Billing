@@ -40,9 +40,9 @@
                                     <select name="phone_numbers[]" class="form-control form-control-alternative" multiple>
                                         <option >-- Select Recipients</option>
 
-                                        @foreach($users as $user)
+                                        @foreach($clients as $client)
 
-                                        <option value="{{ $user->phone}}" class="btn btn-info btn-sm">{{ $user->name}}</option>
+                                        <option value="{{ $client->phone}}" class="btn btn-info btn-sm">{{ $client->first_name . '  ' .  $client->last_name }}</option>
 
                                         @endforeach
                                     </select>

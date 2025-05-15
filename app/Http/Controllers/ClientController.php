@@ -37,24 +37,51 @@ class ClientController extends Controller
 
         Clients::create($validated);
 
-        return redirect()->route('clients.index')->with('success', 'New client created successfully!');
+        return redirect()->route('client.index')->with('success', 'New client created successfully!');
     }
     
-    public function edit()
+    public function edit($id)
     {
-
-       
+        $client = Clients::findOrFail($id);
+        $packages = Packages::all(); 
+        
+        return view('clients.edit', compact('client', 'packages'));
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'connection_type' => 'required|string|max:100',
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'required|string|max:100',
+            'username' => 'required|string|max:100|unique:clients,username,'.$id,
+            'expiry_date' => 'required|date',
+            'package' => 'required|string|max:100',
+            'phone_number' => 'required|string|max:10',
+            'location' => 'required|string|max:100',
+            'password' => 'nullable|string|min:6' // Make password optional for updates
+        ]);
 
-       
+        $client = Clients::findOrFail($id);
+        
+        // Only update password if it was provided
+        if (empty($validated['password'])) {
+            unset($validated['password']);
+        } else {
+            $validated['password'] = $validated['password'];
+        }
+
+        $client->update($validated);
+
+        return redirect()->route('client.index')->with('success', 'Client updated successfully!');
     }
 
-    public function delete()
+    public function destroy($id)
     {
+        $client = Clients::findOrFail($id);
+        $client->delete();
 
+        return redirect()->route('client.index')->with('success', 'Client removed sucessfully!');
        
     }
     

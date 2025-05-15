@@ -92,7 +92,7 @@
                        role="button" 
                        aria-expanded="{{ request()->is('profile*') || request()->is('user*') ? 'true' : 'false' }}" 
                        aria-controls="members-collapse">
-                        <i class="fas fa-user mr-2 text-primary" style="color: #f4645f;"></i>
+                        <i class="ni ni-single-02 text-primary"></i>
                         <span class="nav-link-text">{{ __('Staff') }}</span>
                     </a>
 
@@ -100,12 +100,12 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('profile*') ? 'active' : '' }}" href="{{ route('profile.edit') }}">
-                                    {{ __('User profile') }}
+                                    <i class="ni ni-single-02 text-primary"></i> {{ __('User profile') }}
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}" href="{{ route('user.index') }}">
-                                    {{ __('User Management') }}
+                                    <i class="ni ni-badge text-primary"></i> {{ __('User Management') }}
                                 </a>
                             </li>
                         </ul>
@@ -114,27 +114,25 @@
 
                <!-- Clients Section -->
                <li class="nav-item">
-                    <a class="nav-link {{ request()->is('roles*') ? 'active' : '' }}" 
-                       href="#roles-collapse" 
+                    <a class="nav-link {{ request()->is('client*') ? 'active' : '' }}" 
+                       href="#clients-collapse" 
                        data-toggle="collapse" 
                        role="button" 
-                       aria-expanded="{{ request()->is('roles*') ? 'true' : 'false' }}" 
-                       aria-controls="roles-collapse">
-                        <i class="circle-08" style="color: #f4645f;"></i>
+                       aria-expanded="{{ request()->is('client*') ? 'true' : 'false' }}" 
+                       aria-controls="clients-collapse">
+                        <i class="ni ni-circle-08 text-primary"></i>
                         <span class="nav-link-text">{{ __('Clients') }}</span>
                     </a>
 
-                    <div class="collapse {{ request()->is('roles*') ? 'show' : '' }}" id="roles-collapse">
+                    <div class="collapse {{ request()->is('client*') ? 'show' : '' }}" id="clients-collapse">
                         <ul class="nav nav-sm flex-column">
-
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}" href="{{ route('client.index') }}">
-                                    {{ __('Client Management') }}
+                                <a class="nav-link {{ request()->is('client*') ? 'active' : '' }}" href="{{ route('client.index') }}">
+                                    <i class="ni ni-bullet-list-67 text-primary"></i> {{ __('Client Management') }}
                                 </a>
                             </li>
                         </ul>
                     </div>
-
                 </li>
 
                 <!-- Roles & Permissions Section -->
@@ -145,70 +143,57 @@
                        role="button" 
                        aria-expanded="{{ request()->is('roles*') ? 'true' : 'false' }}" 
                        aria-controls="roles-collapse">
-                        <i class="circle-08" style="color: #f4645f;"></i>
+                        <i class="ni ni-key-25 text-primary"></i>
                         <span class="nav-link-text">{{ __('Roles & Permissions') }}</span>
                     </a>
 
                     <div class="collapse {{ request()->is('roles*') ? 'show' : '' }}" id="roles-collapse">
                         <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link {{ request()->is('roles/index') ? 'active' : '' }}" href="">
-                                    {{ __('Role Management') }}
+                                    <i class="ni ni-ui-04 text-primary"></i> {{ __('Role Management') }}
                                 </a>
                             </li>
                         </ul>
                     </div>
-
                 </li>
 
                  <!-- Finances Section -->
                  <li class="nav-item">
-                    <a class="nav-link {{ request()->is('finances*') ? 'active' : '' }}" 
-                       href="#roles-collapse" 
+                    <a class="nav-link {{ request()->is('finances*') || request()->is('payment*') || request()->is('expenses*') ? 'active' : '' }}" 
+                       href="#finances-collapse" 
                        data-toggle="collapse" 
                        role="button" 
-                       aria-expanded="{{ request()->is('finances*') ? 'true' : 'false' }}" 
-                       aria-controls="roles-collapse">
-                        <i class="circle-08" style="color: #f4645f;"></i>
+                       aria-expanded="{{ request()->is('finances*') || request()->is('payment*') || request()->is('expenses*') ? 'true' : 'false' }}" 
+                       aria-controls="finances-collapse">
+                        <i class="ni ni-money-coins text-primary"></i>
                         <span class="nav-link-text">{{ __('Finances') }}</span>
                     </a>
 
-                    <div class="collapse {{ request()->is('finances*') ? 'show' : '' }}" id="roles-collapse">
+                    <div class="collapse {{ request()->is('finances*') || request()->is('payment*') || request()->is('expenses*') ? 'show' : '' }}" id="finances-collapse">
                         <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                                <a class="nav-link {{ request()->is('finances/index') ? 'active' : '' }}" href="{{ route('finance.packages')}}">
-                                    {{ __('Packages') }}
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('finances/packages') ? 'active' : '' }}" href="{{ route('finance.packages')}}">
+                                    <i class="ni ni-box-2 text-primary"></i> {{ __('Packages') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('payment*') ? 'active' : '' }}" href="{{ route('payment.index')}}">
+                                    <i class="ni ni-credit-card text-primary"></i> {{ __('Payments') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('expenses*') ? 'active' : '' }}" href="{{ route('expenses.index')}}">
+                                    <i class="ni ni-money-coins text-primary"></i> {{ __('Expenses') }}
                                 </a>
                             </li>
                         </ul>
                     </div>
-
-                    <div class="collapse {{ request()->is('finances*') ? 'show' : '' }}" id="roles-collapse">
-                        <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                                <a class="nav-link {{ request()->is('finances/index') ? 'active' : '' }}" href="{{ route('payment.index')}}">
-                                    {{ __('Payments') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="collapse {{ request()->is('finances*') ? 'show' : '' }}" id="roles-collapse">
-                        <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                                <a class="nav-link {{ request()->is('finances/index') ? 'active' : '' }}" href="{{ route('expenses.index')}}">
-                                    {{ __('Expenses') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
                 </li>
-
 
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('sms') ? 'active' : '' }}" href="{{ route('sms.index')}}">
-                        <i class="ni ni-plane text-blue"></i> {{ __('Bulk Sms') }}
+                        <i class="ni ni-send text-primary"></i> {{ __('Bulk Sms') }}
                     </a>
                 </li>
             </ul>
