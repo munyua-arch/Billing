@@ -83,8 +83,9 @@
                     </div>
                     
                     <div class="card-footer py-4">
-                        <nav class="d-flex justify-content-end" aria-label="...">
+                        <nav class="d-flex justify-content-center   " aria-label="...">
                             <!-- Pagination would go here -->
+                           {{ $payments->links() }}
                         </nav>
                     </div>
                 </div>

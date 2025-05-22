@@ -48,7 +48,7 @@
                                             <label class="form-control-label" for="phone">Phone Number</label>
                                             <input type="tel" id="phone" name="phone" 
                                                    class="form-control form-control-alternative" 
-                                                   placeholder="254700123456" value="{{ old('phone') }}" required>
+                                                   placeholder="0700123456" value="{{ old('phone') }}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +68,10 @@
 
                                             <select id="role" name="role[]" class="form-control form-control-alternative">
                                             <option>--Select Role--</option>
-                                            <option value="">Member</option>
+                                            @foreach($roles as $role)
+                                            <option value="{{ $role->id}}">{{ $role->name}}</option>
+
+                                            @endforeach
                                             </select>
                                            
                                         </div>

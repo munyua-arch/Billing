@@ -12,14 +12,6 @@
                 </div>
             </div>
         @endif
-
-        @if(session('error'))
-        <div class="header-body">
-                <div class="alert alert-danger" role="alert">
-                {{ session('success')}}
-                </div>
-            </div>
-        @endif
         </div>
     </div>
 
@@ -31,10 +23,10 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">Packages</h3>
+                                <h3 class="mb-0">Roles &amp; Permissions</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('finance.create')}}" class="btn btn-sm btn-primary">Create Package</a>
+                                <a href="{{ route('roles.create')}}" class="btn btn-sm btn-primary">Create Role</a>
                             </div>
                         </div>
                     </div>
@@ -43,41 +35,33 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
+                                    <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Speed</th>
-                                    <th scope="col">Connection Period</th>
-                                    <th scope="col">Connection Type</th>
                                     <th scope="col">Actions</th> <!-- Added actions column -->
                                 </tr>
                             </thead>
                             <tbody>
-                               @forelse($packages as $package)
+                                @forelse($roles as $role)
                                 <tr>  <!-- Each user gets their own row -->
-                                    
-                                    <td>{{ $package->package_name}}</td>
-                                    <td>{{ $package->price}}</td>
-                                    <td>{{ $package->upload_speed}} / {{ $package->download_speed}}</td>
-                                    <td>{{ $package->duration}}</td>
-                                    <td>{{ $package->package_type}}</td>
-                                   
+                                    <th scope="row">{{ $role->id }}</th>  <!-- Use scope="row" for th in tbody -->
+                                    <td>{{ $role->name }}</td>
                                     <td>
                                         <!-- Action buttons here -->
-                                         <form action="{{ route('finance.delete', $package->id) }}" method="POST">
+                                         <form action="{{ route('roles.destroy', $role->id)}}" method="POST">
                                             @csrf
 
                                             @method('DELETE')
 
-                                            <a  href="{{ route('finance.edit', $package->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a  href="{{ route('roles.edit', $role->id)}}" class="btn btn-warning btn-sm">Edit</a>
                                             <button class="btn btn-danger btn-sm">Delete</button>
                                          </form>
                                     </td>
                                 </tr>
-                               @empty
+                                @empty
                                 <tr>
-                                    <td colspan="4" class="text-center">No Packages found</td>
+                                    <td colspan="4" class="text-center">No roles found</td>
                                 </tr>
-                               @endforelse
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -85,7 +69,7 @@
                     <div class="card-footer py-4">
                         <nav class="d-flex justify-content-center   " aria-label="...">
                             <!-- Pagination would go here -->
-                           {{ $packages->links() }}
+                           {{ $roles->links() }}
                         </nav>
                     </div>
                 </div>

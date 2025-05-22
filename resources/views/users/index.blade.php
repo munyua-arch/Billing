@@ -43,7 +43,6 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Phone</th>
@@ -54,10 +53,14 @@
                             <tbody>
                                 @forelse($users as $user)
                                 <tr>  <!-- Each user gets their own row -->
-                                    <th scope="row">{{ $user->id }}</th>  <!-- Use scope="row" for th in tbody -->
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>+{{ $user->phone }}</td>
+                                    <td>{{ $user->phone }}</td>
+                                    <td>
+                                        @foreach($user->getRoleNames() as $role)
+                                            <button class="btn btn-info btn-sm">{{$role}}</button>
+                                        @endforeach
+                                    </td>
                                    
                                     <td>
                                         <!-- Action buttons here -->
@@ -81,8 +84,9 @@
                     </div>
                     
                     <div class="card-footer py-4">
-                        <nav class="d-flex justify-content-end" aria-label="...">
+                        <nav class="d-flex justify-content-center   " aria-label="...">
                             <!-- Pagination would go here -->
+                           {{ $users->links() }}
                         </nav>
                     </div>
                 </div>

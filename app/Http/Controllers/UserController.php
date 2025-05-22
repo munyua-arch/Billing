@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Models\members;
+use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -18,15 +20,15 @@ class UserController extends Controller
     public function index(User $model)
     {
 
-        $users = User::all();
+        $users = User::paginate(10);
 
         return view('users.index', compact('users'));
     }
 
     public function create()
     {
-        
-        return view("users.create");
+        $roles = Role::all();
+        return view("users.create", compact('roles'));
     }
 
 
@@ -37,14 +39,14 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            // 'phone' => 'required|numeric|digits:12',
+            'phone' => 'nullable|numeric|digits:10',
             'password' => 'required|string|min:8|confirmed'
         ]);
 
         $validated['password'] = bcrypt($validated['password']); 
 
         $user =  User::create($validated);
-        // $user->syncRoles($request->roles);
+        $user->syncRoles($request->roles);
 
         return redirect()->route('user.index')->with('success', 'User created successfully');
     }

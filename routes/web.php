@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FincanceController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SmsController;
 use Illuminate\Support\Facades\Route;
@@ -50,10 +51,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// client routes
 	Route::get('clients', [ClientController::class, 'index'])->name('client.index');
-	Route::get('create', [ClientController::class, 'create'])->name('client.create');
-	Route::post('create', [ClientController::class, 'store'])->name('client.store');
-	Route::get('edit/{id}', [ClientController::class, 'edit'])->name('client.edit');
-	Route::put('edit/{id}', [ClientController::class, 'update'])->name('client.update');
+	Route::get('clients/create', [ClientController::class, 'create'])->name('client.create');
+	Route::post('clients/create', [ClientController::class, 'store'])->name('client.store');
+	Route::get('clients/edit/{id}', [ClientController::class, 'edit'])->name('client.edit');
+	Route::put('clients/edit/{id}', [ClientController::class, 'update'])->name('client.update');
 	Route::delete('client/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
 
 
@@ -76,6 +77,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('expenses/{id}/edit', [ExpenseController::class, 'edit'])->name('expenses.edit');
 	Route::put('expenses/{id}', [ExpenseController::class, 'update'])->name('expenses.update');
 	Route::delete('expenses/{id}', [ExpenseController::class, 'delete'])->name('expenses.delete');
+
+	// roles & permissions routes
+	Route::get('roles & permissions', [RoleController::class, 'index'])->name('roles.index');
+	Route::get('create', [RoleController::class, 'create'])->name('roles.create');
+	Route::post('create', [RoleController::class, 'store'])->name('roles.store');
+	Route::get('edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+	Route::put('edit/{id}', [RoleController::class, 'update'])->name('roles.update');
+	Route::delete('roles & permissions/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
 	
 });
 

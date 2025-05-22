@@ -11,7 +11,7 @@ class FincanceController extends Controller
     //
     public function index()
     {
-        $packages = Packages::all();
+        $packages = Packages::paginate(10);
 
         return view('finance.index', compact('packages'));
     }

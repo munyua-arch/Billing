@@ -150,7 +150,7 @@
                     <div class="collapse {{ request()->is('roles*') ? 'show' : '' }}" id="roles-collapse">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->is('roles/index') ? 'active' : '' }}" href="">
+                                <a class="nav-link {{ request()->is('roles/index') ? 'active' : '' }}" href="{{ route('roles.index') }}">
                                     <i class="ni ni-ui-04 text-primary"></i> {{ __('Role Management') }}
                                 </a>
                             </li>
