@@ -427,7 +427,7 @@ CREATE TABLE `users` (
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -436,7 +436,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (4,'Saif Kinyori','saifkinyori@gmail.com',NULL,'$2y$10$TvXXCA2J2kSCLCBz8n5Te.VBoyYbKA5WZcktDf98l7Lrxsl8Mf8eG',NULL,'2025-05-20 16:18:18','2025-05-20 16:18:18','0729456159'),(6,'Peter Muthuri','peter@gmail.com',NULL,'$2y$10$PiDf5j/KZaG/p59Ii3Ozm.Gr5Hal24yU4hAXCkOQcD/fvmHbJTYGm',NULL,'2025-05-20 16:45:50','2025-05-20 16:45:50','0715024420'),(8,'Dennis Murimi','dmurimi919@gmail.com',NULL,'$2y$10$zhIGl60vgERzy7LfpP3bGO3/sjwzcv72rfWts6EH875ZNBYvpjkGu',NULL,'2025-05-22 12:54:23','2025-05-22 12:54:23','0740289746');
+INSERT INTO `users` VALUES (4,'Saif Kinyori','saifkinyori@gmail.com',NULL,'$2y$10$TvXXCA2J2kSCLCBz8n5Te.VBoyYbKA5WZcktDf98l7Lrxsl8Mf8eG',NULL,'2025-05-20 16:18:18','2025-05-20 16:18:18','0729456159'),(6,'Peter Muthuri','peter@gmail.com',NULL,'$2y$10$PiDf5j/KZaG/p59Ii3Ozm.Gr5Hal24yU4hAXCkOQcD/fvmHbJTYGm',NULL,'2025-05-20 16:45:50','2025-05-20 16:45:50','0715024420'),(8,'Dennis Murimi','dmurimi919@gmail.com',NULL,'$2y$10$zhIGl60vgERzy7LfpP3bGO3/sjwzcv72rfWts6EH875ZNBYvpjkGu',NULL,'2025-05-22 12:54:23','2025-05-22 12:54:23','0740289746'),(9,'Admin','admin@gmail.com',NULL,'$2y$10$V96.ZF56yiV/jG9Bp8M7ueVhty3p1fF7vmfEvCYqR.xybJBdx9G.q',NULL,'2025-05-22 14:38:27','2025-05-22 14:38:27','5555555555');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -449,4 +449,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-22 19:26:47
+-- Dump completed on 2025-05-22 20:41:05

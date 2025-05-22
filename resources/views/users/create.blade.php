@@ -27,6 +27,8 @@
                             </div>
                         </div>
                     </div>
+
+     
                     
                     <div class="card-body">
                         <form method="POST" action="{{ route('user.store')}}" autocomplete="off">
@@ -41,6 +43,12 @@
                                             <input type="text" id="name" name="name" 
                                                    class="form-control form-control-alternative" 
                                                    placeholder="John Doe" value="{{ old('name') }}" required>
+
+                                                   @error('name')
+                                                        <span class="text-danger text-sm" role="alert">
+                                                            <small>{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -48,7 +56,13 @@
                                             <label class="form-control-label" for="phone">Phone Number</label>
                                             <input type="tel" id="phone" name="phone" 
                                                    class="form-control form-control-alternative" 
-                                                   placeholder="0700123456" value="{{ old('phone') }}" required>
+                                                   placeholder="0700123456" value="{{ old('phone') }}" required maxlength="10">
+
+                                            @error('phone')
+                                                <span class="text-danger text-sm" role="alert">
+                                                    <small>{{ $message }}</small>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -59,6 +73,12 @@
                                             <input type="email" id="email" name="email" 
                                                    class="form-control form-control-alternative" value="{{ old('email') }}"
                                                    placeholder="john@example.com">
+
+                                                   @error('email')
+                                                <span class="text-danger text-sm" role="alert">
+                                                    <small>{{ $message }}</small>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
